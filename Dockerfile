@@ -8,7 +8,7 @@ ARG IMAGE_ARG_ALPINE_MIRROR
 ENV ARIA2C_DOWNLOAD aria2c --file-allocation=none -c -x 10 -s 10 -m 0 --console-log-level=notice --log-level=notice --summary-interval=0
 
 
-COPY --from=cirepo/alpine-glibc:3.7_2.23-r3-archive /data/root /
+COPY --from=cirepo/glibc:2.23-r3-alpine-3.7-archive /data/root /
 
 
 # adduser, usermod

@@ -1,5 +1,5 @@
 
-FROM alpine:3.7
+FROM alpine:3.8
 
 
 ARG IMAGE_ARG_ALPINE_MIRROR
@@ -8,7 +8,7 @@ ARG IMAGE_ARG_ALPINE_MIRROR
 ENV ARIA2C_DOWNLOAD aria2c --file-allocation=none -c -x 10 -s 10 -m 0 --console-log-level=notice --log-level=notice --summary-interval=0
 
 
-COPY --from=cirepo/glibc:2.23-r3-alpine-3.7-archive /data/root /
+COPY --from=cirepo/glibc:2.23-r3-alpine-3.8-archive /data/root /
 
 
 # adduser, usermod
@@ -20,8 +20,8 @@ COPY --from=cirepo/glibc:2.23-r3-alpine-3.7-archive /data/root /
 # see: https://linuxbrew.sh/
 RUN set -ex \
   && echo ===== Install libs and tools ===== \
-  && echo "http://${IMAGE_ARG_ALPINE_MIRROR:-dl-cdn.alpinelinux.org}/alpine/v3.7/main" > /etc/apk/repositories \
-  && echo "http://${IMAGE_ARG_ALPINE_MIRROR:-dl-cdn.alpinelinux.org}/alpine/v3.7/community" >> /etc/apk/repositories \
+  && echo "http://${IMAGE_ARG_ALPINE_MIRROR:-dl-cdn.alpinelinux.org}/alpine/v3.8/main" > /etc/apk/repositories \
+  && echo "http://${IMAGE_ARG_ALPINE_MIRROR:-dl-cdn.alpinelinux.org}/alpine/v3.8/community" >> /etc/apk/repositories \
   && echo "http://${IMAGE_ARG_ALPINE_MIRROR:-dl-cdn.alpinelinux.org}/alpine/edge/testing/" >> /etc/apk/repositories \
   && apk add --update aria2 bash bzip2 ca-certificates curl git httpie jq nano openssl shadow sudo tar unzip vim wget xz \
   && apk add --update build-base file ruby ruby-irb ruby-json \
